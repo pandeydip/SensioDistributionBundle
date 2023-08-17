@@ -310,7 +310,7 @@ EOF
         $command = [$php, $phpArgs, $cmd, $bootstrapDir, $autoloadDir, $useNewDirectoryStructure];
         
         $process = new Process($command, getcwd(), null, null, $timeout);
-        
+
         $process->run(function ($type, $buffer) use ($event) { $event->getIO()->write($buffer, false); });
         if (!$process->isSuccessful()) {
             throw new \RuntimeException('An error occurred when generating the bootstrap file.');
@@ -398,7 +398,9 @@ EOF;
             throw new \RuntimeException('The php executable could not be found, add it to your PATH environment variable and try again');
         }
 
-        return $phpPath;
+        return '/usr/bin/php';
+
+        // return $phpPath;
     }
 
     protected static function getPhpArguments()
